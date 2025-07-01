@@ -79,7 +79,7 @@ model = BiLSTMClassifier().to(device)
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=1e-3)
 
-for epoch in range(15):
+for epoch in range(5):
     model.train()
     for inputs, targets in train_loader:
         inputs, targets = inputs.to(device), targets.to(device)
