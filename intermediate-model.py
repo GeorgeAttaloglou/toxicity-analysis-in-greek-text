@@ -6,7 +6,7 @@ import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix, f1_score
 import fasttext
 
 # Load binary .bin model
@@ -63,9 +63,9 @@ val_loader = DataLoader(val_dataset, batch_size=32)
 
 # BiLSTM model
 class BiLSTMClassifier(nn.Module):
-    def __init__(self, embedding_dim=300, hidden_dim=128, output_dim=2):
+    def __init__(self,hidden_dim=256, output_dim=2):
         super(BiLSTMClassifier, self).__init__()
-        self.lstm = nn.LSTM(embedding_dim, hidden_dim, bidirectional=True, batch_first=True)
+        self.lstm = nn.LSTM(300, 256, num_layers=2, dropout=0.5, bidirectional=True, batch_first=True)
         self.fc = nn.Linear(hidden_dim * 2, output_dim)
 
     def forward(self, x):
@@ -79,7 +79,7 @@ model = BiLSTMClassifier().to(device)
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=1e-3)
 
-for epoch in range(5):
+for epoch in range(15):
     model.train()
     for inputs, targets in train_loader:
         inputs, targets = inputs.to(device), targets.to(device)
