@@ -8,8 +8,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import classification_report, confusion_matrix, f1_score
 import fasttext
+import fasttext.util
 
 # Load binary .bin model
+fasttext.util.download_model('el', if_exists='ignore')  # Download Greek model if not present
 fasttext_model = fasttext.load_model("cc.el.300.bin")
 
 # Wrap for compatibility with current code
