@@ -29,7 +29,7 @@ class FTWrapper:
 fasttext_model = FTWrapper(fasttext_model)
 
 # Load training data
-train_df = pd.read_csv("./Data/offenseval-gr-training-v1.csv")
+train_df = pd.read_csv("./Data/offenseval-gr-training-cleaned-v1.csv")
 label_encoder = LabelEncoder()
 train_df["label"] = label_encoder.fit_transform(train_df["subtask_a"])
 
@@ -106,7 +106,7 @@ print("\nValidation Classification Report:\n", classification_report(y_true, y_p
 print("Confusion Matrix:\n", confusion_matrix(y_true, y_pred))
 
 # --- Evaluate on test set ---
-test_df = pd.read_csv("./Data/offenseval-gr-test-v1.csv")
+test_df = pd.read_csv("./Data/offenseval-gr-test-cleaned-v1.csv")
 test_labels_df = pd.read_csv("./Data/offenseval-gr-labels-v1.csv", header=None, names=["id", "label"])
 test_df = test_df.sort_values("id").reset_index(drop=True)
 test_labels_df = test_labels_df.sort_values("id").reset_index(drop=True)

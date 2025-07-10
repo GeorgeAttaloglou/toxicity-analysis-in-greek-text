@@ -9,7 +9,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import LabelEncoder
 
 # Load training data
-training_dataframe = pd.read_csv("./Data/offenseval-gr-training-v1.csv")
+training_dataframe = pd.read_csv("./Data/offenseval-gr-training-cleaned-v1.csv")
 
 # Encode labels from text to int (OFF -> 1, NOT -> 0)
 label_encoder = LabelEncoder()
@@ -37,7 +37,7 @@ print("\nConfusion Matrix: \n", confusion_matrix(y_validation, y_predict))
 # --- Predict on test set ---
 
 # Load test set
-X_test_dataframe = pd.read_csv("./Data/offenseval-gr-test-v1.csv")
+X_test_dataframe = pd.read_csv("./Data/offenseval-gr-test-cleaned-v1.csv")
 y_test_labels_dataframe = pd.read_csv("./Data/offenseval-gr-labels-v1.csv", header=None, names=["id", "label"])
 
 # Sort IDs so that they align in both files to avoid mismatches
