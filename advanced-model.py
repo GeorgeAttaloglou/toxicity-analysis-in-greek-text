@@ -1,5 +1,3 @@
-# File: advanced_toxicity_model_bert.py
-
 import pandas as pd
 import torch
 from torch.utils.data import Dataset, DataLoader
