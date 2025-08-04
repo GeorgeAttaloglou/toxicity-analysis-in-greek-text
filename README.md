@@ -18,6 +18,7 @@ To correctly execute this code you will need to download the following:
 Two models have been developed so far:
 - The baseline model using TF-IDF + Logistic Regression as a performance baseline.
 - The intermediate using [greek fasttext](https://fasttext.cc/docs/en/crawl-vectors.html) and Bidirectional Long Short-Term memory neural networks
+- The advanced model using [Greek BERT](https://huggingface.co/nlpaueb/bert-base-greek-uncased-v1).
 
 ## Data used for training
 
@@ -27,5 +28,3 @@ For the intermediate model we use fasttext and its greek word vector dataset.
 
 ## License
 Distributed under the MIT license. See `LICENSE` for more information.
-
-
